@@ -3,8 +3,9 @@ from playwright.sync_api import expect
 
 class LoginPage:
 
-    def __init__(self, page):
-        self.page = page
+    def __init__(self, page):   #calls like constructor
+        self.page = page    #self refer to current object of class
+                            #page value is storing in to self.page sp other can use it
 
     def launch_baseurl(self):
         self.page.goto(BASEURL)
