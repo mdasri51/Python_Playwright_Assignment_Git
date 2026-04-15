@@ -1,4 +1,4 @@
-from pages.login_page import LoginPage
+from pages.Task1_Login_Page import LoginPage
 from utils.config import USERNAME, PASSWORD
 
 
