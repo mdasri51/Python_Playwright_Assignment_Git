@@ -42,7 +42,8 @@ class CreatePursuitsPage:
 
         #adding new client name
          #self.page.wait_for_load_state("load")
-         self.page.locator("//input[@placeholder='Add New Client']").fill("Mayuri Dasri")
+         name = f"Mayuri Dasri_{int(time.time())}"
+         self.page.locator("//input[@placeholder='Add New Client']").fill(name)
 
         #selecting value fron dropdown from industry
          industry_input = self.page.locator("#rc_select_14")

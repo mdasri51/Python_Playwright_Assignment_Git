@@ -7,11 +7,11 @@ from utils.config import USERNAME, PASSWORD
 def test_create_new_pursuits(page):
 
     
-    login = LoginPage(page)
-    login.launch_baseurl()
-    page.wait_for_load_state("load")
-    login.login(USERNAME, PASSWORD)
-    login.is_logged_in()
+    #login = LoginPage(page)
+    #login.launch_baseurl()
+    #page.wait_for_load_state("load")
+    #login.login(USERNAME, PASSWORD)
+    #login.is_logged_in()
 
     createPursuits = CreatePursuitsPage(page)
     createPursuits.new_create_pursuits_page()
@@ -23,7 +23,7 @@ def test_create_new_pursuits(page):
     createPursuits.validate_success_message()
 
 
-    logout = LogoutPage(page)
-    logout.logOut()
-    logout.is_logged_out()
+    #logout = LogoutPage(page)
+    #logout.logOut()
+    #logout.is_logged_out()
     

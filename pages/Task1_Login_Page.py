@@ -31,5 +31,7 @@ class LoginPage:
 
     def is_logged_in(self):
         expect(self.page.get_by_text("Demand Pursuits")).to_be_visible()
+        print("We are succefully logined in")
+    
 
         

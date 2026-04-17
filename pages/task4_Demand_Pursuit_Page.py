@@ -23,9 +23,15 @@ class DemandPursuits:
         self.page.locator("input[placeholder='Search Client, Pursuit, JupiterID']").fill(cName)
         self.page.wait_for_timeout(5000)
         
-        row = self.page.locator("tr.ant-table-row", has_text=f"{cName}")
-        expect(row).to_be_visible()
-        row.click()
+        #row = self.page.locator("tr.ant-table-row", has_text=f"{cName}")
+        #expect(row).to_be_visible()
+        #row.click()
+        #self.page.wait_for_timeout(5000)
+
+
+        latest_client =self.page.locator("//table//tr[2]", has_text=f"{cName}")
+        expect(latest_client).to_be_visible()
+        latest_client.click()
         self.page.wait_for_timeout(5000)
 
 
