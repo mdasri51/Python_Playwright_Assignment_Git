@@ -1,13 +1,15 @@
-from pages.Task5_Logout_Page import LogoutPage
-from pages.Task1_Login_Page import LoginPage
-from pages.Task3_Create_Pursuits_Page import CreatePursuitsPage
+from pages.task5_Logout_Page import LogoutPage
+from pages.task1_Login_Page import LoginPage
+from pages.task3_Create_Pursuits_Page import CreatePursuitsPage
 from utils.config import USERNAME, PASSWORD
 
 
-def create_new_pursuits(page):
+def test_create_new_pursuits(page):
 
+    
     login = LoginPage(page)
     login.launch_baseurl()
+    page.wait_for_load_state("load")
     login.login(USERNAME, PASSWORD)
     login.is_logged_in()
 
@@ -20,6 +22,8 @@ def create_new_pursuits(page):
     createPursuits.create_pursuit()
     createPursuits.validate_success_message()
 
+
     logout = LogoutPage(page)
     logout.logOut()
     logout.is_logged_out()
+    

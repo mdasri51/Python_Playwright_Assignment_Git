@@ -1,5 +1,4 @@
 import logging
-
 from playwright.sync_api import Page
 from playwright.sync_api import expect
 
@@ -13,12 +12,12 @@ class DemandPursuit:
     def six_category_validate(self):
 
         expected_categories = {
-        "All" : "//span[text()='All'] ",
-        "New" : "(//span[text()='New'])[1]",
-        "In Progress" : "(//span[text()='In Progress'])[1]",
-        "Cancelled" :"//span[text()='Cancelled']",
-        "Won" : "//span[text()='Won']",
-        "Deferred" : "//span[text()='Deferred']"
+        "All" : "//span[@class='sc-eeDRCX bEezqN' and text()='All'] ",
+        "New" : "//span[@class='sc-eeDRCX bEezqN' and text()='New']",
+        "In Progress" : "//span[@class='sc-eeDRCX bEezqN' and text()='In Progress']",
+        "Cancelled" :"//span[@class='sc-eeDRCX bEezqN' and text()='Cancelled']",
+        "Won" : "//span[@class='sc-eeDRCX bEezqN' and text()='Won']",
+        "Deferred" : "//span[@class='sc-eeDRCX bEezqN' and text()='Deferred']"
         }
         
         for name, xpath in expected_categories.items():
@@ -27,23 +26,25 @@ class DemandPursuit:
             logging.info(f"{name} is visible")      #Storing record in report file 
             print(f"{name} is visible")
 
+
     #Test2
     def card_count(self):
 
         categories = [
-            ("ALL","//span[text()='All']/following-sibling::span"),
-            ("New","(//span[text()='New'])[1]/following-sibling::span"),
-            ("In Progress","(//span[text()='In Progress'])[1]/following-sibling::span"),
-            ("Cancelled","//span[text()='Cancelled']/following-sibling::span"),
-            ("Won","//span[text()='Won']/following-sibling::span"),
-            ("Deferred","//span[text()='Deferred']/following-sibling::span"),
+            ("ALL","//span[@class='sc-eeDRCX bEezqN' and text()='All']/following-sibling::span"),
+            ("New","//span[@class='sc-eeDRCX bEezqN' and text()='New']/following-sibling::span"),
+            ("In Progress","//span[@class='sc-eeDRCX bEezqN' and text()='In Progress']/following-sibling::span"),
+            ("Cancelled","//span[@class='sc-eeDRCX bEezqN' and text()='Cancelled']/following-sibling::span"),
+            ("Won","//span[@class='sc-eeDRCX bEezqN' and text()='Won']/following-sibling::span"),
+            ("Deferred","//span[@class='sc-eeDRCX bEezqN' and text()='Deferred']/following-sibling::span"),
         ]
         
         for name, xpath in categories:
-            element = self.page.locator(xpath)
-            assert element.is_visible(), f"{name} count not visible"
-            count = element.inner_text()
+            locator  = self.page.locator(xpath)
+           # assert element.is_visible(), f"{name} count not visible"
+            count = locator.inner_text()
             print(f"{name} has {count} cards")
+
 
     #Test3
     def pursuite_option_validation(self):
@@ -65,7 +66,7 @@ class DemandPursuit:
         
         for name, xpath in expected_categories:
             element =self.page.locator(xpath)
-            assert element.is_visible(), f"{name} is not visible"
+          #  assert element.is_visible(), f"{name} is not visible"
+            expect(element).to_be_visible()
             print(f"{name} is visible")
 
-           

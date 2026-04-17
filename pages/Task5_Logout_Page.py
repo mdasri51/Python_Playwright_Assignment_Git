@@ -11,6 +11,7 @@ class LogoutPage:
         self.page.click("//span[text()='Logout'] ")
 
     def is_logged_out(self):
+        self.page.wait_for_timeout(5000)
         expect(self.page.get_by_text("Login using your Deloitte account to continue")).to_be_visible()   
         
            
